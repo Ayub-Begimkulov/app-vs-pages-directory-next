@@ -1,6 +1,7 @@
 import moment from "moment";
 import { useMemo, useState } from "react";
 import I18N from "i18next";
+import currency from "currency.js";
 
 const i18n = I18N.createInstance({
   lng: "en",
@@ -16,9 +17,9 @@ const i18n = I18N.createInstance({
 i18n.init();
 
 const convertRates = {
-  0: 91,
-  1: 93,
-  2: 90,
+  0: 91.22,
+  1: 93.985,
+  2: 90.11,
 };
 
 export default function Old() {
@@ -44,7 +45,7 @@ export default function Old() {
       </div>
       <div>
         <h3>{i18n.t("Rate")}</h3>
-        {rate}
+        $1 = {currency(rate).format({ separator: ",", symbol: "₽" })}
       </div>
     </div>
   );
